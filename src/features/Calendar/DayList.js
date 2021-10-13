@@ -10,7 +10,7 @@ const Container = styled.span`
   padding-top: 4px;
 `;
 
-const DayItem = styled.span`
+const BlockItem = styled.span`
   display: flex;
   padding: 10px;
   height: 35px;
@@ -18,7 +18,9 @@ const DayItem = styled.span`
   cursor: pointer;
   justify-content: space-between;
   align-items: center;
+`;
 
+const DayItem = styled(BlockItem)`
   &:hover {
     background-color: #2ecc7026;
     font-weight: bold;
@@ -52,7 +54,7 @@ export default function DayList(props) {
   return (
     <Container>
       {blankDays?.map((_, i) => (
-        <DayItem key={i}></DayItem>
+        <BlockItem key={i}></BlockItem>
       ))}
       {daysInMonth?.map((date, i) => {
         const currentDate = setDayJs(`${year}-${month + 1}-${date}`);
