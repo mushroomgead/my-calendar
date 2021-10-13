@@ -18,17 +18,20 @@ const DayItem = styled.span`
   cursor: pointer;
   justify-content: space-between;
   align-items: center;
+
   &:hover {
+    background-color: #2ecc7026;
     font-weight: bold;
     color: #000;
-    background-color: #efefef;
+    border-radius: 3px;
   }
+
   ${(props) =>
     props.isSelected &&
     css`
-      background-color: #2ecc70;
+      background-color: #2ecc7026;
       font-weight: bold;
-      color: #fff;
+      color: #000;
       border-radius: 3px;
     `}
 `;

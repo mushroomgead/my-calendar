@@ -50,11 +50,13 @@ export default function MonthPicker({
     <Container>
       <Date>{getMonthName(month, year)}</Date>
       <Picker>
-        <Button onClick={setPrevMonth}>
+        <Button aria-label="prev-month" onClick={setPrevMonth}>
           <ArrowLeft />
         </Button>
-        <Button onClick={setToday}>TODAY</Button>
-        <Button onClick={setNextMonth}>
+        <Button aria-label="today" onClick={setToday}>
+          TODAY
+        </Button>
+        <Button aria-label="next-month" onClick={setNextMonth}>
           <ArrowRight />
         </Button>
       </Picker>
