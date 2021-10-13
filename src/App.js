@@ -4,22 +4,37 @@ import styled from "styled-components";
 import Calendar from "./features/Calendar";
 import Event from "./features/Event";
 import {
-  setCurrentDate,
+  selectCurrentDate,
   selectEvent,
-  setEventPeriod,
+  setCurrentDate,
+  setEventData,
 } from "./features/Event/eventSlice";
 
 const Container = styled.div`
   display: flex;
   flex-direction: row;
+  width: 1150px;
+  margin: 0 auto;
+  padding-top: 32px;
+  padding-left: 16px;
+  padding-right: 16px;
+  @media (max-width: 768px) {
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+  }
 `;
 
 function App() {
   const dispatch = useDispatch();
   const events = useSelector(selectEvent);
+  const selectedDate = useSelector(selectCurrentDate);
 
   useEffect(() => {
-    dispatch(setEventPeriod());
+    dispatch(setEventData());
   }, []);
 
   const handleOnDateChange = (date) => {
@@ -28,7 +43,11 @@ function App() {
 
   return (
     <Container>
-      <Calendar onDateChange={handleOnDateChange} events={events} />
+      <Calendar
+        onDateChange={handleOnDateChange}
+        events={events}
+        selectedDate={selectedDate}
+      />
       <Event />
     </Container>
   );

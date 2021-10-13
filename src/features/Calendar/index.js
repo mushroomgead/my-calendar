@@ -7,11 +7,20 @@ import DayList from "./DayList";
 import { CURRENT_YEAR, CURRENT_MONTH, TODAY, setDayJs } from "../../utils/date";
 
 const Container = styled.div`
-  background: pink;
+  width: 50%;
+  box-shadow: 1px -1px 13px -2px rgb(0 0 0 / 25%);
+  padding: 16px;
+  border-radius: 12px;
+  @media (max-width: 768px) {
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    width: 100%;
+  }
 `;
 
 export default function Calendar(props) {
-  const { onDateChange, events } = props;
+  const { onDateChange, events, selectedDate } = props;
   const [year, setYear] = useState(CURRENT_YEAR);
   const [month, setMonth] = useState(CURRENT_MONTH);
   const [dayList, setDayList] = useState(null);
@@ -64,6 +73,7 @@ export default function Calendar(props) {
         year={year}
         month={month}
         events={events}
+        selectedDate={selectedDate}
         onDateChange={handleOnDateChange}
       />
     </Container>

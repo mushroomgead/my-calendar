@@ -1,11 +1,5 @@
 import { getStartDate } from "../../utils/date";
-
-function getEventType(startDate, endDate) {
-  if (startDate.isSame(endDate, "date")) {
-    return "SameDate";
-  }
-  return "AnotherDate";
-}
+import { isSameDate } from "../../utils/date";
 
 export function setPeriod(event) {
   const date = event.date;
@@ -15,12 +9,16 @@ export function setPeriod(event) {
   const minute = timeArgs[1];
   const startDate = getStartDate(date, hour, minute);
   const endDate = startDate.add(durationMinute, "minute");
-  const eventType = getEventType(startDate, endDate);
 
-  const eventPeriod = {
-    eventType,
+  return {
     startDate,
     endDate,
+    ...event,
   };
-  return { ...eventPeriod, ...event };
 }
+
+export const getPeriodTime = (event, selectedDate, fieldDate) => {
+  return isSameDate(selectedDate, event[fieldDate])
+    ? event[fieldDate].format("HH:mm")
+    : event[fieldDate].format("HH:mm DD MMMM YYYY");
+};

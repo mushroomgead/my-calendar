@@ -13,6 +13,7 @@ const Item = styled.div`
   align-items: center;
   background: #fff;
   padding: 16px 0;
+  font-weight: bold;
 `;
 
 export default function DayOfWeek() {

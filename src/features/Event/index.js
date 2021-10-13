@@ -1,11 +1,23 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
-import { setDayJs, isBetweenDate } from "../../utils/date";
+import { setDayJs, isBetweenDate, formatDate } from "../../utils/date";
 import { selectCurrentDate, selectEvent } from "./eventSlice";
+import EmptyEvent from "./EmptyEvent";
+import EventItem from "./EventItem";
 
 const Container = styled.div`
-  display: flex;
-  flex-direction: column;
+  padding: 0 16px;
+  flex: 1;
+`;
+
+const Header = styled.div`
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 16px;
+`;
+
+const EventList = styled.div`
+  padding: 0;
 `;
 
 export default function Event() {
@@ -17,21 +29,22 @@ export default function Event() {
     isBetweenDate(selectedDate, event.startDate, event.endDate)
   );
 
+  if (currentEvents.length === 0) return <EmptyEvent />;
   return (
     <Container>
-      <div>Events</div>
-      <ul>
+      <EventList>
+        <Header>{formatDate(selectedDate)}</Header>
         {currentEvents.map((event) => {
+          if (!event) return null;
           return (
-            event && (
-              <li key={event.title}>
-                <span>{event.startDate.format("HH:mm")}</span>
-                <span>{event.title}</span>
-              </li>
-            )
+            <EventItem
+              key={event.title}
+              event={event}
+              selectedDate={selectedDate}
+            />
           );
         })}
-      </ul>
+      </EventList>
     </Container>
   );
 }

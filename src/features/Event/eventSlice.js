@@ -16,7 +16,7 @@ export const eventSlice = createSlice({
     setCurrentDate: (state, action) => {
       state.currentDate = action.payload;
     },
-    setEventPeriod: (state) => {
+    setEventData: (state) => {
       state.list = EVENTS_DATA.map((event) => setPeriod(event));
     },
   },
@@ -26,6 +26,6 @@ export const selectCount = (state) => state.events.value;
 export const selectEvent = (state) => state.events.list;
 export const selectCurrentDate = (state) => state.events.currentDate;
 
-export const { setCurrentDate, setEventPeriod } = eventSlice.actions;
+export const { setCurrentDate, setEventData } = eventSlice.actions;
 
 export default eventSlice.reducer;

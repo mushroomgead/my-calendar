@@ -32,3 +32,11 @@ export function isBetweenDate(currentDate, startDate, endDate) {
 export function getStartDate(currentDate, hour, minute) {
   return dayjs(currentDate).set("hour", hour).set("minute", minute);
 }
+
+export function isSameDate(currentDate, compareDate) {
+  return currentDate.isSame(compareDate, "date");
+}
+
+export function formatDate(date) {
+  return dayjs(date).format("DD MMM YYYY");
+}
