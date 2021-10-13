@@ -7,6 +7,8 @@ export const CURRENT_YEAR = dayjs().year();
 
 export const CURRENT_MONTH = dayjs().month();
 
+export const TODAY = dayjs();
+
 export function getDaysInMonth(year, month) {
   return dayjs(`${year}-${month + 1}-01`).daysInMonth();
 }

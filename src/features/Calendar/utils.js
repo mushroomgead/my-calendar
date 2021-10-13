@@ -1,4 +1,4 @@
-import { getDaysInMonth, getDayOfWeek } from "../../utils/date";
+import { getDaysInMonth, getDayOfWeek, isBetweenDate } from "../../utils/date";
 
 export function getNumberOfDaysInMonth(year, month) {
   const daysInMonth = getDaysInMonth(year, month);
@@ -20,4 +20,10 @@ export function getNumberOfDaysInMonth(year, month) {
     blankDays: blankDaysArray,
     daysArray: daysArray,
   };
+}
+
+export function checkHasEvent(events, currentDate) {
+  return !!events.find((event) =>
+    isBetweenDate(currentDate, event.startDate, event.endDate)
+  );
 }

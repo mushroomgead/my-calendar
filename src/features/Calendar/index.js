@@ -4,24 +4,26 @@ import { getNumberOfDaysInMonth } from "./utils";
 import DaysOfWeek from "./DaysOfWeek";
 import MonthPicker from "./MonthPicker";
 import DayList from "./DayList";
-import { CURRENT_YEAR, CURRENT_MONTH } from "../../utils/date";
+import { CURRENT_YEAR, CURRENT_MONTH, TODAY, setDayJs } from "../../utils/date";
 
 const Container = styled.div`
   background: pink;
 `;
 
-export default function Calendar() {
+export default function Calendar(props) {
+  const { onDateChange, events } = props;
   const [year, setYear] = useState(CURRENT_YEAR);
   const [month, setMonth] = useState(CURRENT_MONTH);
-  const [days, setDays] = useState(null);
+  const [dayList, setDayList] = useState(null);
 
   useEffect(() => {
-    setDays(getNumberOfDaysInMonth(year, month));
+    setDayList(getNumberOfDaysInMonth(year, month));
   }, [year, month]);
 
   const setToday = () => {
     setMonth(CURRENT_MONTH);
     setYear(CURRENT_YEAR);
+    onDateChange(TODAY);
   };
 
   const setPrevMonth = () => {
@@ -42,6 +44,11 @@ export default function Calendar() {
     }
   };
 
+  const handleOnDateChange = (date) => {
+    const selectedDate = setDayJs(`${year}-${month + 1}-${date}`);
+    onDateChange(selectedDate);
+  };
+
   return (
     <Container>
       <MonthPicker
@@ -52,7 +59,13 @@ export default function Calendar() {
         setNextMonth={setNextMonth}
       />
       <DaysOfWeek />
-      <DayList days={days} />
+      <DayList
+        list={dayList}
+        year={year}
+        month={month}
+        events={events}
+        onDateChange={handleOnDateChange}
+      />
     </Container>
   );
 }
