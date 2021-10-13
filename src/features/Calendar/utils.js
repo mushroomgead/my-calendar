@@ -22,7 +22,7 @@ export function getNumberOfDaysInMonth(year, month) {
   };
 }
 
-export function checkHasEvent(events, currentDate) {
+export function checkHasEvents(events, currentDate) {
   return !!events.find((event) =>
     isBetweenDate(currentDate, event.startDate, event.endDate)
   );

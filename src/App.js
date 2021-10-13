@@ -8,7 +8,7 @@ import {
   selectEvent,
   setCurrentDate,
   setEventData,
-} from "./features/Event/eventSlice";
+} from "./libs/eventSlice";
 
 const Container = styled.div`
   display: flex;

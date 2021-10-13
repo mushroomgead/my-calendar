@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import styled from "styled-components";
 import { setDayJs, isBetweenDate, formatDate } from "../../utils/date";
-import { selectCurrentDate, selectEvent } from "./eventSlice";
+import { selectCurrentDate, selectEvent } from "../../libs/eventSlice";
 import EmptyEvent from "./EmptyEvent";
 import EventItem from "./EventItem";
 
@@ -35,7 +35,6 @@ export default function Event() {
       <EventList>
         <Header>{formatDate(selectedDate)}</Header>
         {currentEvents.map((event) => {
-          if (!event) return null;
           return (
             <EventItem
               key={event.title}

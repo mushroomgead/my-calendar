@@ -1,10 +1,11 @@
-import styled from "styled-components";
 import { useEffect, useState } from "react";
+import styled from "styled-components";
+import { CURRENT_YEAR, CURRENT_MONTH, TODAY, setDayJs } from "../../utils/date";
 import { getNumberOfDaysInMonth } from "./utils";
+
 import DaysOfWeek from "./DaysOfWeek";
 import MonthPicker from "./MonthPicker";
 import DayList from "./DayList";
-import { CURRENT_YEAR, CURRENT_MONTH, TODAY, setDayJs } from "../../utils/date";
 
 const Container = styled.div`
   width: 50%;

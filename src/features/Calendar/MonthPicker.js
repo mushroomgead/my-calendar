@@ -15,12 +15,6 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
-const ButtonToday = styled.button`
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-`;
-
 const Date = styled.span`
   justify-content: space-between;
   font-size: 28px;
@@ -44,6 +38,7 @@ const ArrowRight = styled.div`
 const Picker = styled.div`
   display: flex;
 `;
+
 export default function MonthPicker({
   month,
   year,
@@ -56,11 +51,11 @@ export default function MonthPicker({
       <Date>{getMonthName(month, year)}</Date>
       <Picker>
         <Button onClick={setPrevMonth}>
-          <ArrowLeft></ArrowLeft>
+          <ArrowLeft />
         </Button>
-        <ButtonToday onClick={setToday}>TODAY</ButtonToday>
+        <Button onClick={setToday}>TODAY</Button>
         <Button onClick={setNextMonth}>
-          <ArrowRight></ArrowRight>
+          <ArrowRight />
         </Button>
       </Picker>
     </Container>

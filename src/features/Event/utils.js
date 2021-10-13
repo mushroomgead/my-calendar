@@ -1,7 +1,10 @@
 import { getStartDate } from "../../utils/date";
 import { isSameDate } from "../../utils/date";
 
-export function setPeriod(event) {
+const FORMAT_TIME = "HH:mm";
+const FORMAT_DATE_TIME = "HH:mm DD MMMM YYYY";
+
+export function setPeriodTime(event) {
   const date = event.date;
   const durationMinute = event.durationMinute;
   const timeArgs = event.time.split(":");
@@ -17,8 +20,8 @@ export function setPeriod(event) {
   };
 }
 
-export const getPeriodTime = (event, selectedDate, fieldDate) => {
+export function getPeriodTime(event, selectedDate, fieldDate) {
   return isSameDate(selectedDate, event[fieldDate])
-    ? event[fieldDate].format("HH:mm")
-    : event[fieldDate].format("HH:mm DD MMMM YYYY");
-};
+    ? event[fieldDate].format(FORMAT_TIME)
+    : event[fieldDate].format(FORMAT_DATE_TIME);
+}

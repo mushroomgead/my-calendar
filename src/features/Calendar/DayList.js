@@ -1,12 +1,13 @@
 import styled, { css } from "styled-components";
 import { setDayJs, isSameDate } from "../../utils/date";
-import { checkHasEvent } from "./utils";
+import { checkHasEvents } from "./utils";
 
 const Container = styled.span`
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   grid-gap: 1px;
   border-top: 1px solid #dbdbdb;
+  padding-top: 4px;
 `;
 
 const DayItem = styled.span`
@@ -52,7 +53,7 @@ export default function DayList(props) {
       ))}
       {daysInMonth?.map((date, i) => {
         const currentDate = setDayJs(`${year}-${month + 1}-${date}`);
-        const hasEvents = checkHasEvent(events, currentDate);
+        const hasEvents = checkHasEvents(events, currentDate);
         const isSelected = isSameDate(selectedDate, currentDate);
 
         return (
