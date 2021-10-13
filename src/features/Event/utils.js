@@ -2,7 +2,7 @@ import { getStartDate } from "../../utils/date";
 import { isSameDate } from "../../utils/date";
 
 const FORMAT_TIME = "HH:mm";
-const FORMAT_DATE_TIME = "HH:mm DD MMMM YYYY";
+const FORMAT_DATE_TIME = "DD MMMM YYYY HH:mm";
 
 export function setPeriodTime(event) {
   const date = event.date;

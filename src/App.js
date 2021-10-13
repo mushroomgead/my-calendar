@@ -35,7 +35,7 @@ function App() {
 
   useEffect(() => {
     dispatch(setEventData());
-  }, []);
+  }, [dispatch]);
 
   const handleOnDateChange = (date) => {
     dispatch(setCurrentDate(date));
